@@ -1,0 +1,361 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Маникюр Виктория</title>
+<meta name="description" content="Маникюр на дому в Минске, ул. Хоружей. Запись через Instagram и Telegram.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Prata&family=Onest:wght@400;500;600&display=swap">
+<style>
+/* Макет: одна колонка «как прайс в салоне»; герой с палитрой оттенков в форме миндальных ногтей */
+:root {
+  --bg: #F5F0EE;        /* молочный */
+  --surface: #EDE3DF;   /* нюд */
+  --ink: #2D2225;       /* какао-графит */
+  --muted: #76676A;
+  --line: #DDD0CC;
+  --accent: #A3564A;    /* глина, как на акцентном ногте */
+  --accent-ink: #FFFFFF;
+  --sw-1: #F1E6E3; --sw-2: #E3C9BF; --sw-3: #C99A8C; --sw-4: #A3564A; --sw-5: #5A4245;
+  --display: "Prata", "Georgia", "Times New Roman", serif;
+  --body: "Onest", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --step-0: 1rem; --step-1: 1.2rem; --step-2: 1.6rem; --step-3: clamp(2.1rem, 6vw, 3.4rem);
+  --radius: 14px;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #1D1819; --surface: #2A2223; --ink: #F2E9E5; --muted: #B4A4A2; --line: #3E3335;
+    --accent: #D8907F; --accent-ink: #1D1819;
+    --sw-1: #EDE2DE; --sw-2: #DCC1B7; --sw-3: #C4927F; --sw-4: #B9665A; --sw-5: #6B4F52;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #1D1819; --surface: #2A2223; --ink: #F2E9E5; --muted: #B4A4A2; --line: #3E3335;
+  --accent: #D8907F; --accent-ink: #1D1819;
+  --sw-1: #EDE2DE; --sw-2: #DCC1B7; --sw-3: #C4927F; --sw-4: #B9665A; --sw-5: #6B4F52;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+img { max-width: 100%; }
+[hidden] { display: none !important; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; animation: none !important; } }
+body {
+  margin: 0;
+  background: var(--bg); color: var(--ink);
+  font-family: var(--body); font-size: var(--step-0); line-height: 1.6;
+}
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--bg); }
+.wrap {
+  max-width: 1040px; margin: 0 auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+h1, h2, h3 { font-family: var(--display); font-weight: 400; line-height: 1.15; text-wrap: balance; margin: 0; }
+p { margin: 0; }
+a { color: inherit; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 6px; }
+.eyebrow { font-size: .78rem; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); font-weight: 500; }
+
+/* Шапка */
+.top { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: color-mix(in srgb, var(--bg) 92%, transparent); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); }
+.top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 12px; }
+.brand { font-family: var(--display); font-size: 1.35rem; text-decoration: none; }
+.nav { display: flex; gap: 20px; align-items: center; }
+.nav a.link { text-decoration: none; color: var(--muted); font-size: .95rem; }
+.nav a.link:hover { color: var(--ink); }
+@media (max-width: 720px) { .nav a.link { display: none; } }
+
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  padding: 12px 20px; border-radius: 999px; font: 500 .95rem var(--body);
+  text-decoration: none; border: 1px solid var(--ink); color: var(--ink); background: transparent;
+  transition: background .2s, color .2s;
+}
+.btn:hover { background: var(--ink); color: var(--bg); }
+.btn.primary { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+.btn.primary:hover { background: var(--ink); border-color: var(--ink); color: var(--bg); }
+.btn.small { padding: 8px 16px; font-size: .88rem; }
+.btn svg { width: 18px; height: 18px; flex: none; }
+.btn.pending { opacity: .55; pointer-events: none; }
+
+/* Герой */
+.hero .wrap { display: grid; grid-template-columns: 1.15fr .85fr; gap: 48px; align-items: center; padding-block: 64px 56px; }
+.hero-text { display: grid; gap: 22px; min-width: 0; }
+.hero h1 { font-size: var(--step-3); }
+.hero h1 em { font-style: normal; color: var(--accent); }
+.lead { font-size: 1.1rem; color: var(--muted); max-width: 46ch; }
+.actions { display: flex; flex-wrap: wrap; gap: 12px; }
+.facts { display: flex; flex-wrap: wrap; gap: 8px 24px; font-size: .92rem; color: var(--muted); }
+.facts b { color: var(--ink); font-weight: 500; }
+
+.palette { display: grid; gap: 14px; justify-items: center; }
+.swatches { display: flex; align-items: flex-end; gap: clamp(8px, 2vw, 16px); }
+.nail {
+  width: clamp(38px, 7vw, 58px); aspect-ratio: 1 / 1.75; max-width: 100%;
+  border-radius: 50% 50% 46% 46% / 72% 72% 28% 28%;
+  background: var(--c); box-shadow: inset -4px -6px 0 rgb(0 0 0 / .06), inset 5px 6px 0 rgb(255 255 255 / .35);
+  border: 1px solid var(--line);
+}
+.swatches .nail:nth-child(2), .swatches .nail:nth-child(4) { transform: translateY(-14px); }
+.swatches .nail:nth-child(3) { transform: translateY(-22px); }
+.palette figcaption { font-size: .82rem; color: var(--muted); text-align: center; }
+
+@media (max-width: 760px) {
+  .hero .wrap { grid-template-columns: 1fr; gap: 36px; padding-block: 40px 40px; }
+  .palette { justify-items: start; }
+  .palette figcaption { text-align: left; }
+}
+
+/* Секции */
+section.block .wrap { padding-block: 56px; display: grid; gap: 32px; }
+section.block + section.block .wrap { border-top: 1px solid var(--line); }
+.head { display: grid; gap: 10px; max-width: 60ch; }
+.head h2 { font-size: var(--step-2); }
+.head p { color: var(--muted); }
+
+/* Прайс */
+.price-groups { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 40px 56px; }
+@media (max-width: 760px) { .price-groups { grid-template-columns: 1fr; gap: 32px; } }
+.group h3 { font-size: var(--step-1); margin-bottom: 8px; }
+.price-list { list-style: none; margin: 0; padding: 0; }
+.price-list li { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 4px 12px; padding-block: 12px; border-bottom: 1px dashed var(--line); }
+.price-list .name { font-weight: 500; }
+.price-list .price { font-variant-numeric: tabular-nums; white-space: nowrap; font-weight: 500; }
+.price-list .meta { grid-column: 1 / -1; font-size: .86rem; color: var(--muted); }
+.note { font-size: .9rem; color: var(--muted); background: var(--surface); border-radius: var(--radius); padding: 14px 18px; max-width: 70ch; }
+
+/* Работы */
+.work { display: grid; grid-template-columns: 1.4fr 1fr; gap: 32px; align-items: end; }
+.work figure { margin: 0; min-width: 0; }
+.work img { display: block; width: 100%; height: auto; border-radius: var(--radius); }
+.work-side { display: grid; gap: 16px; min-width: 0; }
+.work-side h3 { font-size: var(--step-1); }
+.work-side p { color: var(--muted); }
+.tags { display: flex; flex-wrap: wrap; gap: 8px; }
+.tag { font-size: .82rem; padding: 4px 12px; border-radius: 999px; border: 1px solid var(--line); color: var(--muted); }
+@media (max-width: 760px) { .work { grid-template-columns: 1fr; } }
+
+/* О мастере */
+.about { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px; }
+.about div { display: grid; gap: 8px; align-content: start; }
+.about h3 { font-size: 1.1rem; }
+.about p { color: var(--muted); font-size: .95rem; }
+@media (max-width: 760px) { .about { grid-template-columns: 1fr; gap: 20px; } }
+
+/* Запись */
+.steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px; counter-reset: s; }
+.steps li { counter-increment: s; display: grid; gap: 8px; align-content: start; }
+.steps li::before { content: counter(s); font-family: var(--display); font-size: 1.6rem; color: var(--accent); line-height: 1; }
+.steps b { font-weight: 500; }
+.steps span { color: var(--muted); font-size: .95rem; }
+@media (max-width: 760px) { .steps { grid-template-columns: 1fr; gap: 20px; } }
+
+/* Контакты */
+.contact { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 32px; }
+.card { background: var(--surface); border-radius: var(--radius); padding: 24px; display: grid; gap: 16px; align-content: start; }
+.card dl { margin: 0; display: grid; gap: 14px; }
+.card dt { font-size: .78rem; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+.card dd { margin: 2px 0 0; font-size: 1.1rem; }
+.card .hint { font-size: .88rem; color: var(--muted); }
+.row { display: flex; flex-wrap: wrap; gap: 10px; }
+@media (max-width: 760px) { .contact { grid-template-columns: 1fr; } }
+
+footer .wrap { padding-block: 28px 40px; border-top: 1px solid var(--line); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; color: var(--muted); font-size: .85rem; }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#top">Виктория</a>
+    <nav class="nav" aria-label="Разделы">
+      <a class="link" href="#prices">Услуги и цены</a>
+      <a class="link" href="#works">Работы</a>
+      <a class="link" href="#contacts">Контакты</a>
+      <a class="btn small primary" href="#booking">Записаться</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap">
+      <div class="hero-text">
+        <p class="eyebrow">Маникюр на дому · Минск, ул. Хоружей</p>
+        <h1>Аккуратный маникюр <em>без спешки</em> и&nbsp;салонной суеты</h1>
+        <p class="lead">Меня зовут Виктория. Делаю маникюр с покрытием, укрепление и наращивание. Принимаю одну клиентку за раз, по записи.</p>
+        <div class="actions">
+          <a class="btn primary" data-link="telegram" href="#booking" target="_blank" rel="noopener">Записаться в Telegram</a>
+          <a class="btn" data-link="instagram" href="#booking" target="_blank" rel="noopener">Написать в Instagram</a>
+        </div>
+        <div class="facts">
+          <span><b>Сб и Вс</b>, 09:00–14:00</span>
+          <span><b>Только</b> по записи</span>
+        </div>
+      </div>
+      <figure class="palette" aria-label="Популярные оттенки">
+        <div class="swatches" aria-hidden="true">
+          <span class="nail" style="--c: var(--sw-1)"></span>
+          <span class="nail" style="--c: var(--sw-2)"></span>
+          <span class="nail" style="--c: var(--sw-3)"></span>
+          <span class="nail" style="--c: var(--sw-4)"></span>
+          <span class="nail" style="--c: var(--sw-5)"></span>
+        </div>
+        <figcaption>Молочный · нюд · пудра · глина · какао</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="block" id="prices">
+    <div class="wrap">
+      <div class="head">
+        <p class="eyebrow">Услуги и цены</p>
+        <h2>Прайс</h2>
+        <p>Цены указаны в белорусских рублях. Итог зависит от длины, состояния ногтей и сложности дизайна, точную сумму скажу перед началом.</p>
+      </div>
+      <div class="price-groups">
+        <div class="group">
+          <h3>Маникюр</h3>
+          <ul class="price-list">
+            <li><span class="name">Маникюр без покрытия</span><span class="price">25–35 BYN</span><span class="meta">Комбинированный или аппаратный, форма, кутикула · ~60 мин</span></li>
+            <li><span class="name">Маникюр + гель-лак</span><span class="price">45–60 BYN</span><span class="meta">Однотонное покрытие, носка 3–4 недели · ~2 ч</span></li>
+            <li><span class="name">Мужской маникюр</span><span class="price">25–35 BYN</span><span class="meta">Без покрытия, матовая полировка по желанию · ~50 мин</span></li>
+          </ul>
+        </div>
+        <div class="group">
+          <h3>Укрепление и наращивание</h3>
+          <ul class="price-list">
+            <li><span class="name">Укрепление базой или гелем</span><span class="price">+10–15 BYN</span><span class="meta">К маникюру с покрытием, для тонких и ломких ногтей</span></li>
+            <li><span class="name">Наращивание</span><span class="price">70–100 BYN</span><span class="meta">Гель на верхние формы, длина до 3 · ~3 ч</span></li>
+            <li><span class="name">Коррекция наращивания</span><span class="price">60–80 BYN</span><span class="meta">Через 3–4 недели · ~2,5 ч</span></li>
+          </ul>
+        </div>
+        <div class="group">
+          <h3>Дизайн</h3>
+          <ul class="price-list">
+            <li><span class="name">Френч или градиент</span><span class="price">+10–15 BYN</span><span class="meta">На все ногти</span></li>
+            <li><span class="name">Рисунок, слайдер, втирка</span><span class="price">1–5 BYN</span><span class="meta">За один ноготь, по сложности</span></li>
+          </ul>
+        </div>
+        <div class="group">
+          <h3>Дополнительно</h3>
+          <ul class="price-list">
+            <li><span class="name">Снятие покрытия</span><span class="price">5–10 BYN</span><span class="meta">Работа другого мастера или без последующего покрытия</span></li>
+            <li><span class="name">Ремонт ногтя</span><span class="price">3–5 BYN</span><span class="meta">За один ноготь</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="works">
+    <div class="wrap">
+      <div class="head">
+        <p class="eyebrow">Работы</p>
+        <h2>Из последнего</h2>
+      </div>
+      <div class="work">
+        <figure>
+          <img src="img/nails.jpg" width="1280" height="964" alt="Миндальные ногти молочного оттенка, на безымянном пальце тонкий рисунок с терракотовым акцентом">
+        </figure>
+        <div class="work-side">
+          <h3>Молочный нюд с акцентом</h3>
+          <p>Форма «миндаль», прозрачно-молочное покрытие с укреплением. На одном ногте тонкий линейный рисунок с терракотовым пятном.</p>
+          <div class="tags"><span class="tag">миндаль</span><span class="tag">гель-лак</span><span class="tag">укрепление</span><span class="tag">дизайн 1 ноготь</span></div>
+          <div class="row"><a class="btn" data-link="instagram" href="#booking" target="_blank" rel="noopener">Больше работ в Instagram</a></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="about">
+    <div class="wrap">
+      <div class="head">
+        <p class="eyebrow">Как у меня</p>
+        <h2>Спокойно, чисто, по времени</h2>
+      </div>
+      <div class="about">
+        <div><h3>Стерильные инструменты</h3><p>Дезинфекция, очистка и сухожар. Крафт-пакет вскрываю при вас, пилки и бафы одноразовые.</p></div>
+        <div><h3>Одна клиентка за раз</h3><p>Никто не ждёт в очереди. Можно выпить чай и спокойно выбрать оттенок.</p></div>
+        <div><h3>Носка 3–4 недели</h3><p>Если покрытие отслоилось в первую неделю, исправлю бесплатно.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="booking">
+    <div class="wrap">
+      <div class="head">
+        <p class="eyebrow">Запись</p>
+        <h2>Как записаться</h2>
+      </div>
+      <ol class="steps">
+        <li><b>Напишите мне</b><span>В Telegram или Instagram: какая услуга нужна и есть ли сейчас покрытие.</span></li>
+        <li><b>Выберем время</b><span>Принимаю в субботу и воскресенье с 09:00 до 14:00.</span></li>
+        <li><b>Получите адрес</b><span>Подъезд, этаж и квартиру пришлю после подтверждения записи.</span></li>
+      </ol>
+      <div class="actions">
+        <a class="btn primary" data-link="telegram" href="#booking" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.4 4.3 2.9 11.4c-1.3.5-1.2 1.2-.2 1.5l4.7 1.5 1.8 5.6c.2.6.4.8.9.8s.7-.2 1-.5l2.3-2.2 4.7 3.5c.9.5 1.5.2 1.7-.8l3.1-14.6c.3-1.3-.5-1.9-1.5-1.4ZM9.5 14.2l9-5.7c.4-.3.8-.1.5.2l-7.6 6.9-.3 3.2-1.6-4.6Z"/></svg>
+          Telegram
+        </a>
+        <a class="btn" data-link="instagram" href="#booking" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+          Instagram
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="contacts">
+    <div class="wrap">
+      <div class="head">
+        <p class="eyebrow">Контакты</p>
+        <h2>Где я принимаю</h2>
+      </div>
+      <div class="contact">
+        <div class="card">
+          <dl>
+            <div><dt>Адрес</dt><dd>Минск, ул. Хоружей, 15</dd><p class="hint">Точный адрес сообщу при записи</p></div>
+            <div><dt>Часы работы</dt><dd>Суббота и воскресенье, 09:00–14:00</dd></div>
+            <div><dt>Запись</dt><dd>Только заранее, через Telegram или Instagram</dd></div>
+          </dl>
+        </div>
+        <div class="card">
+          <dl><div><dt>На карте</dt><dd>ул. Хоружей, 15</dd></div></dl>
+          <p class="hint">Откройте адрес в удобном приложении и постройте маршрут.</p>
+          <div class="row">
+            <a class="btn primary" href="https://yandex.by/maps/?text=%D0%9C%D0%B8%D0%BD%D1%81%D0%BA%2C%20%D1%83%D0%BB.%20%D0%A5%D0%BE%D1%80%D1%83%D0%B6%D0%B5%D0%B9%2C%2015" target="_blank" rel="noopener">Яндекс Карты</a>
+            <a class="btn" href="https://www.google.com/maps/search/?api=1&amp;query=%D0%9C%D0%B8%D0%BD%D1%81%D0%BA%2C%20%D1%83%D0%BB.%20%D0%A5%D0%BE%D1%80%D1%83%D0%B6%D0%B5%D0%B9%2C%2015" target="_blank" rel="noopener">Google Maps</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>Маникюр «Виктория» · Минск</span>
+    <span>Сб–Вс, 09:00–14:00, по записи</span>
+  </div>
+</footer>
+
+<script>
+  // Сюда вставить ссылки Виктории, например "https://t.me/имя" и "https://instagram.com/имя"
+  const LINKS = { telegram: "", instagram: "" };
+
+  document.querySelectorAll("[data-link]").forEach(a => {
+    const url = LINKS[a.dataset.link];
+    if (url) { a.href = url; return; }
+    a.classList.add("pending");
+    a.removeAttribute("target");
+    a.title = "Ссылка появится позже";
+  });
+</script>
+</body>
+</html>
